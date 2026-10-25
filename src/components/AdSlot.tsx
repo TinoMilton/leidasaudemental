@@ -26,8 +26,8 @@ export function AdSlot({ slot, format = 'auto', layout, className }: AdSlotProps
   if (!enabled) return null;
 
   return (
-    <aside aria-label="Publicidade" className={cn('my-10 text-center', className)}>
-      <span className="block text-xs uppercase tracking-wider text-[#9CA3AF] mb-2">
+    <aside aria-label="Publicidade" className={cn('not-prose my-10 text-center', className)}>
+      <span aria-hidden="true" className="block text-xs uppercase tracking-wider text-[#6B7280] mb-2">
         Publicidade
       </span>
       <ins
@@ -37,7 +37,7 @@ export function AdSlot({ slot, format = 'auto', layout, className }: AdSlotProps
         data-ad-slot={slot}
         data-ad-format={format}
         data-ad-layout={layout}
-        data-full-width-responsive="true"
+        data-full-width-responsive={format === 'auto' ? 'true' : undefined}
       />
     </aside>
   );
