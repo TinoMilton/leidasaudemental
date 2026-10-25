@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, Calendar, User, Tag, Share2, Facebook, Twitter, Linkedin, ChevronRight } from 'lucide-react';
 import { getPostBySlug, getRelatedPosts, type BlogPost } from '@/data/blogPosts';
@@ -80,6 +80,10 @@ export function BlogPostPage() {
   const navigate = useNavigate();
   const post = slug ? getPostBySlug(slug) : undefined;
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!post) {
     return (

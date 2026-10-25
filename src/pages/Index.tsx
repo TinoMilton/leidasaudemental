@@ -22,12 +22,16 @@ const Index = () => {
         <Statistics />
         <AboutLaw />
         <Pillars />
-        <AdSlot slot={adSlots.home} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" />
+        <div className="bg-[#F5F7F5]">
+          <AdSlot slot={adSlots.home} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-0 py-10" />
+        </div>
         <ComplianceSteps />
         <BlogPreview />
         <Benefits />
         <FAQ />
-        <AdSlot slot={adSlots.home} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" />
+        <div className="bg-[#F5F7F5]">
+          <AdSlot slot={adSlots.home} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-0 py-10" />
+        </div>
         <CTASection />
         <Contact />
       </main>
