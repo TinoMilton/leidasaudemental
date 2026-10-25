@@ -1,12 +1,14 @@
 const env = import.meta.env;
 
-export const adsenseClient: string | undefined = env.VITE_ADSENSE_CLIENT || undefined;
+const read = (value?: string) => value?.trim() || undefined;
+
+export const adsenseClient = read(env.VITE_ADSENSE_CLIENT);
 
 export const adSlots = {
-  blogInArticle: env.VITE_ADSENSE_SLOT_BLOG_INARTICLE || undefined,
-  blogFooter: env.VITE_ADSENSE_SLOT_BLOG_FOOTER || undefined,
-  blogList: env.VITE_ADSENSE_SLOT_BLOG_LIST || undefined,
-  home: env.VITE_ADSENSE_SLOT_HOME || undefined,
+  blogInArticle: read(env.VITE_ADSENSE_SLOT_BLOG_INARTICLE),
+  blogFooter: read(env.VITE_ADSENSE_SLOT_BLOG_FOOTER),
+  blogList: read(env.VITE_ADSENSE_SLOT_BLOG_LIST),
+  home: read(env.VITE_ADSENSE_SLOT_HOME),
 } as const;
 
 const SCRIPT_ID = 'adsbygoogle-js';
@@ -19,6 +21,6 @@ export function loadAdSense() {
   script.id = SCRIPT_ID;
   script.async = true;
   script.crossOrigin = 'anonymous';
-  script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`;
+  script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(adsenseClient)}`;
   document.head.appendChild(script);
 }
