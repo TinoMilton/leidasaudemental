@@ -8,7 +8,11 @@ const LAST_UPDATED = '25 de outubro de 2026';
 export function PrivacyPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    const previousTitle = document.title;
     document.title = 'Política de Privacidade | Lei da Saúde Mental';
+    return () => {
+      document.title = previousTitle;
+    };
   }, []);
 
   return (
@@ -37,8 +41,8 @@ export function PrivacyPage() {
               exibir e medir anúncios.
             </li>
             <li>
-              <strong>Dados fornecidos por você:</strong> informações enviadas voluntariamente em
-              formulários do site, como nome e e-mail.
+              <strong>Dados fornecidos por você:</strong> informações que você nos envia
+              voluntariamente, por exemplo ao entrar em contato por e-mail.
             </li>
           </ul>
 
@@ -67,14 +71,15 @@ export function PrivacyPage() {
 
           <h2>3. Consentimento</h2>
           <p>
-            Cookies de análise e publicidade só são ativados após o seu consentimento, solicitado por
-            meio do aviso de cookies exibido no site. Você pode alterar sua escolha a qualquer momento
-            pelo mesmo aviso ou pelas configurações do seu navegador.
+            Utilizamos o Modo de Consentimento do Google. Onde exigido pela legislação aplicável, um
+            aviso de cookies solicita sua autorização antes do uso de cookies de análise e publicidade.
+            Você pode alterar sua escolha a qualquer momento por esse aviso ou pelas configurações do
+            seu navegador.
           </p>
 
           <h2>4. Finalidade e base legal</h2>
           <p>
-            Utilizamos os dados para medir audiência, melhorar o conteúdo, responder contatos e exibir
+            Utilizamos os dados para medir audiência, melhorar o conteúdo, responder mensagens recebidas e exibir
             anúncios que mantêm o site gratuito. As bases legais são o consentimento (art. 7º, I, da
             LGPD) e o legítimo interesse (art. 7º, IX), conforme o caso.
           </p>
