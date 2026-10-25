@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run dev      # Start development server (port 8080)
 npm run build    # Production build
 npm run lint     # Run ESLint
+npm test         # Run Vitest unit tests
 npm run preview  # Preview production build
 ```
 
@@ -24,12 +25,15 @@ This is a marketing/informational website about Lei 14.831/2024 (Saúde Mental n
 - **Supabase** for database (future blog backend)
 - **Lucide React** for icons
 - **Inter** font (Google Fonts)
+- **Vitest** for unit tests
+- **Google AdSense** (env-gated) with Consent Mode v2 defaults in index.html
 
 ### Project Structure
 - `src/pages/` - Route-level page components:
   - `Index.tsx` - Landing page with all sections
   - `blog/BlogList.tsx` - Blog listing with search and category filters
   - `blog/BlogPost.tsx` - Individual blog post with markdown parsing, table of contents, sharing
+  - `Privacy.tsx` - Privacy policy page
 - `src/sections/` - Landing page section components (12 total):
   - `Navbar.tsx` - Fixed navbar with scroll effect and mobile menu
   - `Hero.tsx` - Hero section with badge, features, CTAs
@@ -54,6 +58,9 @@ This is a marketing/informational website about Lei 14.831/2024 (Saúde Mental n
 - `src/data/blogPosts.ts` - Static blog posts data (3 articles with markdown content)
 - `src/types/database.ts` - TypeScript types for Supabase tables
 - `src/lib/supabase.ts` - Supabase client configuration
+- `src/lib/adsense.ts` - AdSense env config (`VITE_ADSENSE_*`) and script loader; ads are disabled when unset
+- `src/lib/markdown.tsx` - Blog markdown parser (`parseContent`, with `beforeH2` hook for in-article ads)
+- `src/components/AdSlot.tsx` - Single AdSense unit; renders nothing without client + slot IDs
 - `src/lib/utils.ts` - Utility functions including `cn()` for className merging
 
 ### Design System
@@ -70,6 +77,7 @@ This is a marketing/informational website about Lei 14.831/2024 (Saúde Mental n
 - `/` - Landing page (all sections)
 - `/blog` - Blog listing with search/filter
 - `/blog/:slug` - Individual blog post
+- `/privacidade` - Privacy policy (required for AdSense / LGPD)
 - `*` - Redirects to `/`
 
 ### Path Aliases
