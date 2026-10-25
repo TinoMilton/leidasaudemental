@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, Clock, User, ChevronRight, Filter } from 'lucide-react';
 import { getAllPosts, type BlogPost } from '@/data/blogPosts';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Navbar } from '@/sections/Navbar';
 import { Footer } from '@/sections/Footer';
+import { AdSlot } from '@/components/AdSlot';
+import { adSlots } from '@/lib/adsense';
 
 const categories = ['Todos', 'NR-1', 'Implementação', 'Prevenção', 'Legislação'];
 
@@ -210,12 +212,16 @@ export function BlogListPage() {
         {filteredPosts.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filteredPosts.map((post, index) => (
-              <BlogCard
-                key={post.id}
-                post={post}
-                index={index}
-                isVisible={isVisible}
-              />
+              <Fragment key={post.id}>
+                <BlogCard
+                  post={post}
+                  index={index}
+                  isVisible={isVisible}
+                />
+                {index === 2 && filteredPosts.length > 3 && (
+                  <AdSlot slot={adSlots.blogList} className="col-span-full my-0" />
+                )}
+              </Fragment>
             ))}
           </div>
         ) : (

@@ -10,6 +10,8 @@ import { FAQ } from '@/sections/FAQ';
 import { CTASection } from '@/sections/CTASection';
 import { Contact } from '@/sections/Contact';
 import { Footer } from '@/sections/Footer';
+import { AdSlot } from '@/components/AdSlot';
+import { adSlots } from '@/lib/adsense';
 
 const Index = () => {
   return (
@@ -20,10 +22,12 @@ const Index = () => {
         <Statistics />
         <AboutLaw />
         <Pillars />
+        <AdSlot slot={adSlots.home} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" />
         <ComplianceSteps />
         <BlogPreview />
         <Benefits />
         <FAQ />
+        <AdSlot slot={adSlots.home} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" />
         <CTASection />
         <Contact />
       </main>

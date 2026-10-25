@@ -6,6 +6,16 @@ import { parseContent } from '@/lib/markdown';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Navbar } from '@/sections/Navbar';
 import { Footer } from '@/sections/Footer';
+import { AdSlot } from '@/components/AdSlot';
+import { adSlots } from '@/lib/adsense';
+
+// In-article ads go before these h2 headings, i.e. after sections 2 and 5
+const IN_ARTICLE_AD_BEFORE_H2 = [3, 6];
+
+function renderInArticleAd(ordinal: number, key: string) {
+  if (!IN_ARTICLE_AD_BEFORE_H2.includes(ordinal)) return null;
+  return <AdSlot key={key} slot={adSlots.blogInArticle} format="fluid" layout="in-article" />;
+}
 
 function RelatedPostCard({ post }: { post: BlogPost }) {
   return (
@@ -202,8 +212,10 @@ export function BlogPostPage() {
 
             {/* Article Content */}
             <article className="prose prose-lg max-w-none">
-              {parseContent(post.content)}
+              {parseContent(post.content, { beforeH2: renderInArticleAd })}
             </article>
+
+            <AdSlot slot={adSlots.blogFooter} />
 
             {/* Tags */}
             <div className="mt-10 pt-6 border-t border-[#E8F5E9]">
