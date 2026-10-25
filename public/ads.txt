@@ -1,2 +1,2 @@
-# Replace pub-0000000000000000 with your AdSense publisher ID after signup.
-google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+# After AdSense signup, uncomment the line below and replace pub-0000000000000000 with your publisher ID.
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
