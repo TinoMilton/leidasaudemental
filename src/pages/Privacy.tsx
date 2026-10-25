@@ -71,10 +71,12 @@ export function PrivacyPage() {
 
           <h2>3. Consentimento</h2>
           <p>
-            Utilizamos o Modo de Consentimento do Google. Onde exigido pela legislação aplicável, um
-            aviso de cookies solicita sua autorização antes do uso de cookies de análise e publicidade.
-            Você pode alterar sua escolha a qualquer momento por esse aviso ou pelas configurações do
-            seu navegador.
+            Utilizamos o Modo de Consentimento do Google. Cookies de publicidade personalizada só são
+            utilizados com o seu consentimento, que pode ser concedido ou recusado no aviso de cookies.
+            Cookies de análise (Google Analytics) são utilizados com base no legítimo interesse para
+            medir a audiência de forma agregada, exceto nas regiões em que a legislação exige
+            consentimento prévio. Você pode alterar suas escolhas a qualquer momento pelo aviso de
+            cookies ou pelas configurações do seu navegador.
           </p>
 
           <h2>4. Finalidade e base legal</h2>
