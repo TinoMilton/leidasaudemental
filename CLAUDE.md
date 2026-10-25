@@ -82,3 +82,6 @@ This is a marketing/informational website about Lei 14.831/2024 (Saúde Mental n
 
 ### Path Aliases
 Use `@/` for imports from `src/` directory (configured in vite.config.ts and tsconfig.json).
+
+### AdSense
+Ads are inert until `VITE_ADSENSE_*` env vars are set (see `.env.example`). Activation steps (Cloudflare Pages env vars, `public/ads.txt`, consent message) are in `docs/superpowers/specs/2026-10-25-adsense-design.md` under "Post-deploy steps".

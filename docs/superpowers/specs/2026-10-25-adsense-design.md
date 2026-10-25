@@ -147,7 +147,7 @@ The existing snippet's duplicate `dataLayer`/`gtag` definitions are merged so `g
 ## Post-deploy steps for the site owner
 
 1. Sign up at AdSense with `leidasaudemental.com.br`.
-2. Set `VITE_ADSENSE_CLIENT` in Cloudflare Pages env, redeploy; update `public/ads.txt` with the publisher ID.
+2. Set `VITE_ADSENSE_CLIENT` in Cloudflare Pages env, redeploy; uncomment the record in `public/ads.txt` and set the publisher ID.
 3. Request review in AdSense.
 4. After approval: create 4 display/in-article ad units, set the `VITE_ADSENSE_SLOT_*` vars, redeploy.
 5. Enable the consent message in AdSense › Privacy & messaging (European regulations + US states messages as offered).
@@ -155,3 +155,19 @@ The existing snippet's duplicate `dataLayer`/`gtag` definitions are merged so `g
 ## Risk
 
 AdSense frequently rejects small sites for "low-value content". With 3 blog posts, approval may require more original articles first — aim for ~10–15 substantial posts before requesting review.
+
+## As-built deviations (2026-10-25)
+
+Changes made during implementation review; the code is the source of truth.
+
+- **Parser hook:** `parseContent(content, { beforeH2 })` in `src/lib/markdown.tsx` (moved out of BlogPost) instead of an `insertAfterHeadings` array; BlogPost inserts in-article ads before h2 #3 and #6.
+- **Env values** are trimmed (`src/lib/adsense.ts` and `vite.config.ts`); the client is URL-encoded in the script src.
+- **AdSlot:** `not-prose`, label color `#6B7280` with `aria-hidden` (the `<aside>` carries the accessible name), `data-full-width-responsive` only for `format="auto"`.
+- **Blog post route** is keyed by slug (`BlogPostRoute` in `App.tsx`) so ads and page state reset between articles; posts scroll to top on mount.
+- **Landing ads** sit in full-bleed `bg-[#F5F7F5]` wrappers matching the preceding sections.
+- **ads.txt** ships comment-only until the publisher ID exists.
+- **Consent defaults** (owner decision): EEA/UK/CH deny everything until consent (with `wait_for_update: 500`); elsewhere ads are denied until consent and `analytics_storage` is granted. GA4 therefore measures normally outside EEA/UK/CH.
+- **Privacy policy** text describes current behavior (forms don't submit data; consent notice "quando exibido").
+
+### Post-deploy note: consent outside Europe
+Ad storage is denied by default everywhere, so visitors only get personalized ads after accepting a consent message. In AdSense › Privacy & messaging, check whether a message can target Brazil / other regions; without one, Brazilian traffic is served limited/non-personalized ads (lower RPM). Revisit the defaults in `index.html` if that trade-off isn't acceptable.
