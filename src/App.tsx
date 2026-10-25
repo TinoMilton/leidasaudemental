@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-
 import Index from "./pages/Index";
 import { BlogListPage } from "./pages/blog/BlogList";
 import { BlogPostPage } from "./pages/blog/BlogPost";
+import { PrivacyPage } from "./pages/Privacy";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/blog" element={<BlogListPage />} />
           <Route path="/blog/:slug" element={<BlogPostRoute />} />
+          <Route path="/privacidade" element={<PrivacyPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
