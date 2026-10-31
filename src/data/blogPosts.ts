@@ -1,3 +1,13 @@
+import { oQueENr1 } from './posts/o-que-e-nr-1';
+import { lei14831OQueE } from './posts/lei-14831-o-que-e';
+import { diferencaNr1Lei14831 } from './posts/diferenca-nr-1-lei-14831';
+import { exemplosRiscosPsicossociais } from './posts/exemplos-riscos-psicossociais';
+import { afastamentosSaudeMentalRecorde } from './posts/afastamentos-saude-mental-recorde';
+import { mitosSaudeMentalNoTrabalho } from './posts/mitos-saude-mental-no-trabalho';
+import { assedioMoralNoTrabalho } from './posts/assedio-moral-no-trabalho';
+import { presenteismoCustoInvisivel } from './posts/presenteismo-custo-invisivel';
+import { sinaisSofrimentoEquipeLider } from './posts/sinais-sofrimento-equipe-lider';
+
 export interface BlogPost {
   id: number;
   slug: string;
@@ -15,7 +25,7 @@ export interface BlogPost {
   relatedPosts: number[];
 }
 
-export const blogPosts: BlogPost[] = [
+const originalPosts: BlogPost[] = [
   {
     id: 1,
     slug: 'riscos-psicossociais-nr1',
@@ -748,6 +758,20 @@ Lembre-se: prevenir é sempre mais eficaz e menos custoso do que tratar. Invista
 **Se você está passando por isso, saiba que não está sozinho. Busque ajuda. Sua saúde mental é prioridade.**
     `
   }
+];
+
+// Newest first; the first post is featured on /blog.
+export const blogPosts: BlogPost[] = [
+  oQueENr1,
+  lei14831OQueE,
+  diferencaNr1Lei14831,
+  exemplosRiscosPsicossociais,
+  afastamentosSaudeMentalRecorde,
+  mitosSaudeMentalNoTrabalho,
+  assedioMoralNoTrabalho,
+  presenteismoCustoInvisivel,
+  sinaisSofrimentoEquipeLider,
+  ...originalPosts,
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
