@@ -7,6 +7,7 @@ import { Navbar } from '@/sections/Navbar';
 import { Footer } from '@/sections/Footer';
 import { AdSlot } from '@/components/AdSlot';
 import { adSlots } from '@/lib/adsense';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 const categories = ['Todos', 'NR-1', 'Implementação', 'Prevenção', 'Legislação'];
 
@@ -129,6 +130,12 @@ export function BlogListPage() {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
+
+  usePageMeta({
+    title: 'Blog | NR-1, Lei 14.831 e Saúde Mental no Trabalho',
+    description: 'Artigos em linguagem simples sobre NR-1, riscos psicossociais, a Lei 14.831/2024 e como promover a saúde mental no trabalho.',
+    path: '/blog',
+  });
 
   const allPosts = getAllPosts();
   const featuredPost = allPosts[0];

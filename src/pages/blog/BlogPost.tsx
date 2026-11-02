@@ -8,6 +8,7 @@ import { Navbar } from '@/sections/Navbar';
 import { Footer } from '@/sections/Footer';
 import { AdSlot } from '@/components/AdSlot';
 import { adSlots } from '@/lib/adsense';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 // In-article ads go before these h2 headings, i.e. after sections 2 and 5
 const IN_ARTICLE_AD_BEFORE_H2 = [3, 6];
@@ -84,6 +85,14 @@ export function BlogPostPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  usePageMeta({
+    title: post ? `${post.title} | Lei da Saúde Mental` : 'Artigo não encontrado | Lei da Saúde Mental',
+    description: post?.excerpt ?? 'O artigo que você procura não existe ou foi removido.',
+    path: post ? `/blog/${post.slug}` : '/blog',
+    image: post?.image,
+    type: post ? 'article' : 'website',
+  });
 
   if (!post) {
     return (

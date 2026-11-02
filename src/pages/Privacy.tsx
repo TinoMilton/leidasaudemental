@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Navbar } from '@/sections/Navbar';
 import { Footer } from '@/sections/Footer';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 const CONTACT_EMAIL = 'contato@leidasaudemental.com.br';
 const LAST_UPDATED = '25 de outubro de 2026';
@@ -8,12 +9,13 @@ const LAST_UPDATED = '25 de outubro de 2026';
 export function PrivacyPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
-    const previousTitle = document.title;
-    document.title = 'Política de Privacidade | Lei da Saúde Mental';
-    return () => {
-      document.title = previousTitle;
-    };
   }, []);
+
+  usePageMeta({
+    title: 'Política de Privacidade | Lei da Saúde Mental',
+    description: 'Como o site leidasaudemental.com.br coleta, usa e protege informações dos visitantes, em conformidade com a LGPD.',
+    path: '/privacidade',
+  });
 
   return (
     <div className="min-h-screen bg-white">
