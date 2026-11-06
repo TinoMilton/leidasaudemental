@@ -80,7 +80,8 @@ export function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const post = slug ? getPostBySlug(slug) : undefined;
-  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
+  // Fire on the first visible pixel: long articles can never reach a 10% ratio on small screens
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0 });
 
   useEffect(() => {
     window.scrollTo(0, 0);

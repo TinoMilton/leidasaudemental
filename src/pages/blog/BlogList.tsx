@@ -129,7 +129,8 @@ function FeaturedPost({ post }: { post: BlogPost }) {
 export function BlogListPage() {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
-  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.1 });
+  // Fire on the first visible pixel: a long post grid can never reach a 10% ratio on small screens
+  const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0 });
 
   usePageMeta({
     title: 'Blog | NR-1, Lei 14.831 e Saúde Mental no Trabalho',
